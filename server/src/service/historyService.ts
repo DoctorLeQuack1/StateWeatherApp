@@ -60,12 +60,19 @@ export class HistoryService {
       if (city_registered) {
         return false;
       } else {
-        // Si ya hay ciudades, agregamos la nueva al array
-        cities.push(_city); // Agregamos la nueva ciudad
-        await this.write(cities); // Escribimos el array actualizado en el archivo
+        cities.push(_city); 
+        await this.write(cities); 
         return true;
       }      
     }
-    //this.write(newCities);
+  }
+
+  async removeCity(id: string) {
+    const cities: any = await this.getCities();
+    const index = cities.findIndex((city : City) => city.id === id);
+    if (index !== -1) {
+      cities.splice(index, 1);
+    }
+    await this.write(cities);
   }
 }
