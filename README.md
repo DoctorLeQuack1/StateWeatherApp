@@ -46,8 +46,8 @@ This project is covered under the MIT License.
 Refer to [MIT License](https://opensource.org/licenses/MIT) for more information.
 
 ## Questions
-Feel free to check out more interesting projects on my GitHub page: [https://github.com/DoctorLeQuack1](https://github.com/sdfs).  
-For any questions regarding this project, reach out to me at: [sergioa430@outlook.com](mailto:sdf@outlook.com).
+Feel free to check out more interesting projects on my GitHub page: [https://github.com/DoctorLeQuack1](https://github.com/DoctorLeQuack1).  
+For any questions regarding this project, reach out to me at: [sergioa430@outlook.com](mailto:sergioa430@outlook.com).
 
 ## Video Link
 Please, check out my the following walkthrough video for a quick tutorial!
