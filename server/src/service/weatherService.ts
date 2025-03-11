@@ -4,6 +4,7 @@ dotenv.config();
 // TODO: Define a class for the Weather object
 export interface WeatherObject {
   city?: string;
+  id? : number;
   date: string;
   icon: string;
   iconDescription: string;
@@ -26,35 +27,6 @@ export class WeatherService {
     this.cityName = cityName;
   }
 
-  // async getWeatherForCity(): Promise<WeatherObject | null>{
-  //   try {
-  //     const url_string = `${this.baseURL}/data/2.5/weather?q=${this.cityName}&appid=${this.apiKEY}`;      
-  //     const response = await fetch(url_string);
-      
-  //     if (!response.ok) {
-  //       throw new Error(`Error: ${response.status} ${response.statusText}`);
-  //     }
-
-  //     const data: any = await response.json();
-
-  //     const weather_object : WeatherObject  = {
-  //       city: data.name,
-  //       date: new Date(data.dt * 1000).toLocaleDateString('es-ES'),
-  //       icon: data.weather[0].icon,
-  //       iconDescription: data.weather[0].description,
-  //       tempF: data.main.temp,
-  //       windSpeed: data.wind.speed,
-  //       humidity: data.main.humidity
-  //     };
-
-  //     return weather_object;
-
-  //   } catch (error) {
-  //     console.error(`Error obtaining weather: ${(error as Error).message}`);
-  //     return null;
-  //   }
-  // }
-
   async getWeatherForecast(): Promise<Array<WeatherObject> | null> {
 
     const url_string = `${this.baseURL}/data/2.5/forecast?q=${this.cityName}&appid=${this.apiKEY}`;      
@@ -75,6 +47,7 @@ export class WeatherService {
 
         const curr_day_weather : WeatherObject = {
           city : this.cityName,
+          id: element.weather[0].id,
           date : format_day,
           icon: element.weather[0].icon,
           iconDescription: element.weather[0].description,
