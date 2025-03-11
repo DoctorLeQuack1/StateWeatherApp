@@ -28,7 +28,7 @@ router.post('/', async (req: Request, res: Response) => {
 
     history_service.addCity(city_);
     const city_arr : Array<WeatherObject> = [data];
-    city_arr.push(...arr_data);
+    city_arr.push(...arr_data.slice(1));
     return res.status(200).json(city_arr);
   } else {
     return res.status(500).json('Data fetching was not executed.');
