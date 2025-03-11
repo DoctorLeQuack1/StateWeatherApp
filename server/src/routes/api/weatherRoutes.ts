@@ -14,10 +14,11 @@ router.post('/', async (req: Request, res: Response) => {
 
   //Here we create a weather service object to fetch forecast
   const currentWeather : WeatherService = new WeatherService(cityName);
+  let data : WeatherObject | null = await currentWeather.getWeatherForCity();
   const arr_data : Array<WeatherObject> | null = await currentWeather.getWeatherForecast();
 
   //Declare our target_data as an array
-  if (arr_data) {
+  if (data && arr_data) {
     // TODO: save city to search history
     const history_service : HistoryService = new HistoryService();
     const city_ : City = {
@@ -26,8 +27,9 @@ router.post('/', async (req: Request, res: Response) => {
     }
 
     history_service.addCity(city_);
-
-    return res.status(200).json(arr_data);
+    const city_arr : Array<WeatherObject> = [data];
+    city_arr.push(...arr_data);
+    return res.status(200).json(city_arr);
   } else {
     return res.status(500).json('Data fetching was not executed.');
   }
