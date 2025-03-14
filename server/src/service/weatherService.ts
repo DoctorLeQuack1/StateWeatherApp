@@ -29,7 +29,7 @@ export class WeatherService {
 
     async getWeatherForCity(): Promise<WeatherObject | null>{
      try {
-       const url_string = `${this.baseURL}/data/2.5/weather?q=${this.cityName}&appid=${this.apiKEY}`;      
+       const url_string = `${this.baseURL}/data/2.5/weather?q=${this.cityName}&appid=${this.apiKEY}&units=imperial`;
        const response = await fetch(url_string);
        
        if (!response.ok) {
@@ -58,7 +58,7 @@ export class WeatherService {
 
   async getWeatherForecast(): Promise<Array<WeatherObject> | null> {
 
-    const url_string = `${this.baseURL}/data/2.5/forecast?q=${this.cityName}&appid=${this.apiKEY}`;      
+    const url_string = `${this.baseURL}/data/2.5/forecast?q=${this.cityName}&appid=${this.apiKEY}&units=imperial`;
     const response = await fetch(url_string);
     const forecast_arr : Array<WeatherObject> =  [];
 
